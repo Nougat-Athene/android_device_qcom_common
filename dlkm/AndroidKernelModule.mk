@@ -112,12 +112,12 @@ ifndef $(KBUILD_TARGET)_RULE
 $(KBUILD_TARGET)_RULE := 1
 
 # To ensure KERNEL_OUT and TARGET_PREBUILT_INT_KERNEL are defined,
-# kernel/AndroidKernel.mk must be included. While m and regular
+# AndroidKernel.mk must be included. While m and regular
 # make builds will include kernel/AndroidKernel.mk, mm and mmm builds
-# do not. Therefore, we need to explicitly include kernel/AndroidKernel.mk.
+# do not. Therefore, we need to explicitly include AndroidKernel.mk.
 # It is safe to include it more than once because the entire file is
 # guarded by "ifeq ($(TARGET_PREBUILT_KERNEL),) ... endif".
-include kernel/AndroidKernel.mk
+include $(TARGET_KERNEL_SOURCE)/AndroidKernel.mk
 
 # Kernel modules have to be built after:
 #  * the kernel config has been created
